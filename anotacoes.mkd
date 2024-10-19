@@ -20,3 +20,6 @@ No arquivo package.json, é preciso adicionar:
 Logo nas primeiras linhas, abaixo de name, version, description e main
 adicionar:
 ``"type": "module",``
+
+
+ - Uma boa prática para o projeto: sempre criar projetos em inglês
