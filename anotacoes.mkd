@@ -23,3 +23,22 @@ adicionar:
 
 
  - Uma boa prática para o projeto: sempre criar projetos em inglês
+
+**O que é Slug?** Basicamente é a url para chegar a determinada categoria, por exemplo:
+{nomedosite.com.br}/categorias/*marketing*
+{nomedosite.com.br}/categorias/*estudos*
+O slug não pode conter caracter especial, letra maiúscula, espaço. No nome da categoria pode existir, por exemplo:
+Categoria: Desenvolvimento Web
+Slug: {nomedosite.com.br}/categorias/*desenvolvimento-web*
+
+
+## Algumas anotações em relação ao ``MongoDB``
+- ``show dbs;``
+  - No vídeo ele utiliza outro comando para visualizar os bancos, enquanto na nova versão utiliza esse mencionado acima;
+- ``use blogapp``
+  - Para selecionar determinado banco de dados
+- ``show collections;``
+  - Para mostrar as tabelas do banco de dados
+- ``db.categorias.find()``
+  - O nome categorias se refere a tabela criada no projeto, mas pode variar de acorod com o projeto que for criado, esse código seria para mostrar os conteúdos que contém nessa tabela, em específico nesse exemplo, na tabela ``categorias``
+- Para o banco de dados funcionar o tempo todo, é necessário que o cmd ou terminal esteja aberto durante todo o período de utilização.
