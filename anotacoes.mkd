@@ -1,0 +1,22 @@
+Cria o package.json
+``npm init -y``
+
+Depois instala as dependências:
+Inicia o projeto instalando o express
+``npm install --save express``
+
+Instalação do handlebars
+``npm instal --save express-handlebars``
+
+Não é necessário instalar o body-parser, pois foi descontinuado
+
+Depois:
+``npm install --save mongoose``
+
+E depois já adiantando nodemon
+``npm install --save nodemon``
+
+No arquivo package.json, é preciso adicionar:
+Logo nas primeiras linhas, abaixo de name, version, description e main
+adicionar:
+``"type": "module",``

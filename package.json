@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
+    "mongoose": "^8.7.2",
+    "nodemon": "^3.1.7"
+  },
+  "name": "blogapp",
+  "version": "1.0.0",
+  "description": "Terceira sequência do módulo do [Curso de Node.js](https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&si=HGni3_JQCR2Pox3I) do canal [Victor Lima - Ciência da Computação](https://www.youtube.com/@GuiadoProgramador)",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
