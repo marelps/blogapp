@@ -42,3 +42,15 @@ Slug: {nomedosite.com.br}/categorias/*desenvolvimento-web*
 - ``db.categorias.find()``
   - O nome categorias se refere a tabela criada no projeto, mas pode variar de acorod com o projeto que for criado, esse código seria para mostrar os conteúdos que contém nessa tabela, em específico nesse exemplo, na tabela ``categorias``
 - Para o banco de dados funcionar o tempo todo, é necessário que o cmd ou terminal esteja aberto durante todo o período de utilização.
+
+## Cookies
+É um arquivo de texto muito simples, cuja composição depende diretamente do conteúdo do endereço Web visitado. Por exemplo, a maioria do sites armazenam informações básicas, como endereços IP e preferência sobre idiomas, cores, etc. Contudo, em portais como Gmail e o Hotmail, noems de usuários e senhas de email também fazem parte dos Cookies
+
+## Sessões 
+- Sessões geralmente dependem de cookies, mas os dados são guardados no servidor. Funciona assim:
+  - Uma sessão é iniciada no servidor, que envia um cookie ao browser com um ID único daquela sessão;
+  - Qualquer dado associado à sessão é armazenado no servidor, associado a esse ID;
+  - Em toda requisição, o browser envia de volta o cookie com o ID da sessão, o que permite ao servidor dar acesso aos dados associados àquele ID;
+  - Portanto, usar sessões é um pouco mais seguro que guardar dados diretamente em cookies, já que se alguém tiver acesso ao cookies não tem acesso direto aos dados (isso sem falar que não cabem muitos dados no cookies)
+
+## Middlewares

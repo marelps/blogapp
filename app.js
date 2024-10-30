@@ -13,14 +13,27 @@ const __dirname = path.dirname(__filename);
     //import mongoose from "mongoose"
     import admin from './routes/admin.js'
 import mongoose from 'mongoose';
-
-
+import session from "express-session";
+import flash from "connect-flash";
 
 // Middleware para lidar com requisições URL-encoded e JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Configurações
+    //Sessão
+        app.use(session({
+            secret: "cursoblogapp",
+            resave: true,
+            saveUninitialized: true
+        }))
+        app.use(flash())
+    // Middleware
+        app.use((req, res, next) => {
+            res.locals.success_msg = req.flash("success_msg")
+            res.locals.error_msg = req.flash("error_msg")
+            next()
+        })
     // Body Parser
     /* Não é necessário configurar atualmente o bodyparser pois foi descontinuado, as linhas a seguir é somente para seguir o vídeo
         app.use(bodyParser.urlencoded({extended: true}))
