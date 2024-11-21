@@ -53,10 +53,10 @@ router.post('/categorias/nova', (req, res) => {
 
     new Categoria(novaCategoria).save().then(() => {
             console.log('Categoria salva com sucesso!')
-            // res.redirect('/admin/categorias'); // Adicione um redirect após salvar
+            res.redirect('/admin/categorias'); // Adicione um redirect após salvar
         }).catch((err) => {
             console.log(`Error: ${err}`)
-           // res.redirect('/admin/categorias'); // Redirecione mesmo após erro
+           res.redirect('/admin/categorias'); // Redirecione mesmo após erro
         });
 });
 
@@ -67,7 +67,17 @@ router.get("/categorias/edit/:id", (req, res) => {
         req.flash("error_msg", "Esta categoria não existe")
         res.redirect("/admin/categorias")
     })
-    
+})
+
+router.post("/categorias/deletar", (req, res) => {
+    // Categoria.remove({_id: req.body.id}).then(() => { // .remove foi depreciado
+    Categoria.deleteOne({_id: req.body.id}).then(() => { 
+        req.flash("success_msg", "Categoria deletada com sucesso!")
+        res.redirect("/admin/categorias")
+    }).catch((err) => {
+        req.flash("error_msg", "Houve um erro ao deletar a categoria")
+        res.redirect("/admin/categorias")
+    })
 })
 
 // Exportando as rotas
