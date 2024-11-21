@@ -60,6 +60,16 @@ router.post('/categorias/nova', (req, res) => {
         });
 });
 
+router.get("/categorias/edit/:id", (req, res) => {
+    Categoria.findOne({_id:req.params.id}).then((categoria) => {
+        res.render("admin/editcategorias", {categoria: categoria})
+    }).catch((err) => {
+        req.flash("error_msg", "Esta categoria não existe")
+        res.redirect("/admin/categorias")
+    })
+    
+})
+
 // Exportando as rotas
     // Exporte o router como padrão
     export default router;
