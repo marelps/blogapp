@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
-const Postagem = new Schema({
+const PostagemSchema = new mongoose.Schema({
     titulo:{
         type: String,
         required: true
@@ -29,4 +29,5 @@ const Postagem = new Schema({
     }
 })
 
-mongoose.model("postagens", Postagem)
+const Postagem = mongoose.model("postagens", PostagemSchema);
+export default Postagem;

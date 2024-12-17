@@ -1,8 +1,9 @@
 // Rota para guardar todas as minhas rotas de admin
 import express from "express"; // substitui o require express
 const router = express.Router(); // Componente utilizado para criar rotas em arquivos separados
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import Categoria from "../models/Categoria.js";
+import Postagem from "../models/Postagem.js";
 // const Categoria = mongoose.model("categorias")
 
 router.get("/", (req, res) => {
@@ -97,17 +98,53 @@ router.post("/categorias/deletar", (req, res) => {
     });
 });
 
-router.get("/postagem", (req, res) => {
-  res.render("admin/postagem");
+router.get("/postagens", (req, res) => {
+  Postagem.find()
+    .sort({ date: "desc" })
+    .lean()
+    .then((postagens) => {
+      res.render("admin/postagens", { postagens: postagens });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "Houve um erro ao listar as postagens.");
+      res.redirect("/admin");
+    });
 });
 
-router.get("/postagem/add", (req, res) => {
+router.get("/postagens/add", (req, res) => {
     Categoria.find().lean().then((categorias) => {
         res.render("admin/addpostagem", {categorias: categorias})
     }).catch((err) => {
         req.flash("error_msg", "Houve um erro ao carregar o formulário")
         res.redirect("/admin")  
     })
+})
+
+router.post("/postagens/nova", (req, res) => {
+  //recebendo os dados do formulário
+  var erros = []
+  if(req.body.categoria == 0) {
+      erros.push({texto:"Cadastre uma categoria antes de criar uma nova postagem"})
+  }
+  if (erros.length > 0){
+      res.render("admin/addpostagem", {erros: erros})
+  } else {
+      const novaPostagem = {
+          titulo: req.body.titulo,
+          descricao: req.body.descricao,
+          conteudo: req.body.conteudo,
+          categoria: req.body.categoria,
+          slug: req.body.slug
+      }
+      new Postagem(novaPostagem).save().then(() => {
+          req.flash("success_msg", `Postagem ${req.body.titulo} criada com sucesso`)
+          res.redirect("/admin/postagens")
+      }).catch((err) => {
+          req.flash("error_msg", `Erro ao criar a postagem  ${req.body.titulo}`)
+          console.log("Erro ao cadastrar postagem: ",err)
+          res.redirect("/admin/postagens")
+      })
+  }
 })
 
 // Exportando as rotas
