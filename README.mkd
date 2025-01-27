@@ -5,3 +5,29 @@ Etapas realizadas a partir 31º vídeo da playlist onde é iniciado um projeto c
 
 Também deixarei aqui anotações de estudos que achar pertinente num arquivo separado
 [Acesso para as minhas anotações](anotacoes.mkd)
+
+
+## Instalação
+- Express
+  - Pacote baixado diretamente pelo NPM
+
+``$ npm install express --save``
+
+- Nodemon
+  - Pacote baixado diretamente pelo NPM globalmente
+
+``$ npm install nodemon -g``
+
+- Handlebars
+  - Pacote baixado diretamente pelo NPM expecífico para o Express
+
+``$ npm install --save express-handlebars``
+
+- MongoDB
+- Mongoose
+  - Pacote baixado diretamente pelo NPM
+
+``$ npm install --save mongoose``
+
+
+Projeto rodando: http://localhost:8081/
